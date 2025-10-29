@@ -1,15 +1,11 @@
 # from vigenere_cipher import vigenere_cipher
-from mini_des import mini_des_algorithm as md
-
+from mini_des import mini_des_algorithm as mini
 
 
 def main():
 
-    key = 0b10110101
-    message = "This is information security class"
-    mini_des = md.Mini_DES(key=key, data=message)
-
-    mini_des.sub_key_gen()
+    mini_des = mini.Mini_DES()
+    mini_des.sub_gen()
     # key = 0b10110101
     # message = 'my message is encrypted'
     # mini = mn.MiniDES(data=message, key=key, block_size=8, round = 2)
