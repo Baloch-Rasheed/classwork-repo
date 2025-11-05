@@ -10,6 +10,13 @@ def main():
     mini_des = md.Mini_DES(key=key, data=message)
 
     mini_des.sub_key_gen()
+    cipher_text = mini_des.encrypt()
+    print('Plain_Text :'+ message)
+    print('Encrypted Text: ' + cipher_text)
+
+    plain_text = mini_des.decrypt(cipher_text)
+    print('Decrypted Text: '+ plain_text)
+    
     # key = 0b10110101
     # message = 'my message is encrypted'
     # mini = mn.MiniDES(data=message, key=key, block_size=8, round = 2)
