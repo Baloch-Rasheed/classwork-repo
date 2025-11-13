@@ -29,4 +29,18 @@ class Mini_DES:
             cipher_text += chr(binary_cipher_block)
         return cipher_text
 
+    def decrypt(self, cipher_text):
+        plain_text = ''
+        for blocks in cipher_text:
+            binary_block = ord(blocks)
+            right_half = binary_block & 0xF
+            left_half = (binary_block >> 4) & 0xF
+            for i in range(self._rounds -1 , -1, -1):
+                temp  = right_half
+                right_half = left_half
+                left_half = temp ^ self.f(left_half, self._sub_keys[i])
+            
+            binary_plain_text_block = (left_half << 4) | right_half
+            plain_text += chr(binary_plain_text_block)
+        return plain_text
             

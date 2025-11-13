@@ -14,6 +14,10 @@ def main():
     print('Plain_Text :'+ message)
     print('Encrypted Text: ' + cipher_text)
 
+    decrypted_text = mini_des.decrypt(cipher_text)
+
+    print('Decrypted Text: '+ decrypted_text)
+
     # text = mini_des.decrypt(cipher_text)
     # print('Decrypted Text: '+ text)
     
