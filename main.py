@@ -1,22 +1,38 @@
 # from vigenere_cipher import vigenere_cipher
 from mini_des import mini_des_algorithm as md
+from aes import AES_Algorithm
 
 
 
 def main():
 
-    key = 0b10110101
+    key = 'abcdefghijklmnop'
     message = "This is information security class"
-    mini_des = md.Mini_DES(key=key, data=message, rounds=2)
+    
+    aes = AES_Algorithm()
 
-    mini_des.sub_key_gen()
-    cipher_text = mini_des.encrypt()
-    print('Plain_Text :'+ message)
-    print('Encrypted Text: ' + cipher_text)
+    encrypted_text = aes.encrypt(key, message)
 
-    decrypted_text = mini_des.decrypt(cipher_text)
+    print(f"Plain Text: {message}")
+    print(f"Encrypted Text: "+ encrypted_text.decode())
 
-    print('Decrypted Text: '+ decrypted_text)
+    encrypted_text2 = aes.encrypt(key, message)
+
+    print(f"Encrypted Text 2: "+ encrypted_text2.decode())
+
+    decrypted_text = aes.decrypt(key, encrypted_text)
+    print("Decrypted Text: "+ decrypted_text)
+    
+    # mini_des = md.Mini_DES(key=key, data=message, rounds=2)
+
+    # mini_des.sub_key_gen()
+    # cipher_text = mini_des.encrypt()
+    # print('Plain_Text :'+ message)
+    # print('Encrypted Text: ' + cipher_text)
+
+    # decrypted_text = mini_des.decrypt(cipher_text)
+
+    # print('Decrypted Text: '+ decrypted_text)
 
     # text = mini_des.decrypt(cipher_text)
     # print('Decrypted Text: '+ text)
