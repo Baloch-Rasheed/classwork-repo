@@ -1,6 +1,7 @@
 # from vigenere_cipher import vigenere_cipher
 # from mini_des import mini_des_algorithm as md
-from aes_algorithms import AES_Alg
+# from aes_algorithms import AES_Alg
+from hash_algorithm import HashAl
 
 
 
@@ -8,18 +9,32 @@ def main():
 
     key = 'abcdabcdabcdabcd'
     message = "This is information security class"
-
-    aes = AES_Alg()
-
-    encrypted_text = aes.encrypt(key, message)
-    encrypted_text2 = aes.encrypt(key, message)
+    message2 = "This is information security class "
 
     print('Plain Text:'+ message)
-    print(f'Encrypted Text: '+ encrypted_text.decode())
-    print(f'Encrypted Text 2: '+ encrypted_text2.decode())
 
-    decrypted_text = aes.decrypt(key, encrypted_text2)
-    print(f'Decrypted Text 2: '+ decrypted_text)
+    hs = HashAl()
+    results = hs.message_hash(message)
+    results2 = hs.message_hash(message2)
+    results3 = hs.text_doc_hash('documents.txt')
+
+    print(f"Hash Key: {results}")
+    print(f"Hash Key 2: {results2}")
+    print(f"File Hash Key: {results3}")
+
+
+
+    # aes = AES_Alg()
+
+    # encrypted_text = aes.encrypt(key, message)
+    # encrypted_text2 = aes.encrypt(key, message)
+
+    # print('Plain Text:'+ message)
+    # print(f'Encrypted Text: '+ encrypted_text.decode())
+    # print(f'Encrypted Text 2: '+ encrypted_text2.decode())
+
+    # decrypted_text = aes.decrypt(key, encrypted_text2)
+    # print(f'Decrypted Text 2: '+ decrypted_text)
 
 
     # mini_des = md.Mini_DES(key=key, data=message)
