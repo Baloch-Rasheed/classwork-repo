@@ -1,6 +1,7 @@
 # from vigenere_cipher import vigenere_cipher
 from mini_des import mini_des_algorithm as md
 from aes import AES_Algorithm
+from hash_algorithm import HashAl
 
 
 
@@ -8,20 +9,30 @@ def main():
 
     key = 'abcdefghijklmnop'
     message = "This is information security class"
-    
-    aes = AES_Algorithm()
-
-    encrypted_text = aes.encrypt(key, message)
-
+    message2 = "This is information security class "
     print(f"Plain Text: {message}")
-    print(f"Encrypted Text: "+ encrypted_text.decode())
 
-    encrypted_text2 = aes.encrypt(key, message)
+    hs = HashAl()
 
-    print(f"Encrypted Text 2: "+ encrypted_text2.decode())
+    digest =  hs.message_hash(message)
+    digest2 =  hs.message_hash(message2)
+    print(f'Digest :{digest}')
+    print(f'Digest 2 :{digest2}')
 
-    decrypted_text = aes.decrypt(key, encrypted_text)
-    print("Decrypted Text: "+ decrypted_text)
+    
+    # aes = AES_Algorithm()
+
+    # encrypted_text = aes.encrypt(key, message)
+
+    # print(f"Plain Text: {message}")
+    # print(f"Encrypted Text: "+ encrypted_text.decode())
+
+    # encrypted_text2 = aes.encrypt(key, message)
+
+    # print(f"Encrypted Text 2: "+ encrypted_text2.decode())
+
+    # decrypted_text = aes.decrypt(key, encrypted_text)
+    # print("Decrypted Text: "+ decrypted_text)
     
     # mini_des = md.Mini_DES(key=key, data=message, rounds=2)
 
